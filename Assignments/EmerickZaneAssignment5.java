@@ -1,6 +1,7 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.Collections;
+
+// original grade: 63 / 70
+// redone, should be 70 / 70 now
 
 /**
  * Name: Zane Emerick 
@@ -12,90 +13,75 @@ import java.util.Collections;
  * and has the ability to print out charts and statistics for the companies
  */
 
-public class EmerickZaneAssignment5{
-    public static void main(String [] args){
-        Scanner input = new Scanner(System.in);
-        ArrayList <Integer> totalSalesList = new ArrayList<>();
+ public class EmerickZaneAssignment5 {
+     public static void main(String[] args) {
+         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter the sales from all stores, end input with a \"-1\": ");
+         //create variables for categories
+         int numBetween1kAnd5k = 0;
+         int numMoreThan5k = 0;
+         int numLessThan1k = 0;
+         double sum = 0;
+         int count = 0;
 
-        //build arrayList with all the prices arranged
-        int priceTotals = 0;
-        while(priceTotals != -1){
-            priceTotals = input.nextInt();
-            totalSalesList.add(priceTotals);
-        }
+         System.out.print("Enter the sales from all stores, end input with a \"-1\": ");
+         double salesAmount = input.nextDouble();
+         System.out.println();
 
-        if(totalSalesList.size() != 1){
-            //remove the -1 at the end of the array
-            totalSalesList.remove(totalSalesList.size()-1);
-            System.out.println("");
+         double largestSale = salesAmount;
+         double smallestSale = salesAmount;
 
-            //build the bar graph for data
-            buildStarChart(totalSalesList);
-            //sort the array for data purposes
-            Collections.sort(totalSalesList);
-            //print out statistics for data
-            System.out.println("Number of sales: " + totalSalesList.size());
-            System.out.println("Largest sales amount = " + (double)(totalSalesList.get(totalSalesList.size() - 1)));
-            System.out.println("Smallest sales amount = " + (double)(totalSalesList.get(0)));
-            System.out.println("Sum of all sales amounts = " + sumList(totalSalesList));
-            System.out.println("Range (Largest - Smallest) = " + (double)(totalSalesList.get(totalSalesList.size() - 1) - totalSalesList.get(0)));
-            System.out.println("Average = " + sumList(totalSalesList) / totalSalesList.size());
-            //find number between various amounts
-            System.out.println("\nNumber of sales less than 1000 = " + salesLessThan(totalSalesList, 1000));
-            System.out.println("Number of sales between 1000 and 5000 = " + (salesLessThan(totalSalesList, 5000) - salesLessThan(totalSalesList, 1000)));
-            System.out.println("Number of sales greater than 5000 = " + (totalSalesList.size() - salesLessThan(totalSalesList, 5000)));
-        } else {
-            System.out.println("The only number entered was -1...");
-        }
+         //loop through input until -1 is reached
+         while(salesAmount != 1) {
+             if(salesAmount < 1000) {
+                 numLessThan1k++;
+             } else if(salesAmount >= 1000 && salesAmount <= 5000) {
+                 numBetween1kAnd5k++;
+             } else {
+                 numMoreThan5k++;
+             }
 
-        input.close();
-    }
+             if(salesAmount > largestSale) {
+                 largestSale = salesAmount;
+             }
 
-    /**
-     * @param list a list of integers containing the sales from companies
-     * @param amount the specified highest number for search
-     * @return number of objects in list that are less than amount
-     */
-    public static int salesLessThan(ArrayList<Integer> list,int amount){
-        int count = 0;
-        for(int i : list){
-            if(i < amount){
-                count++;
-            }
-        }
-        return count;
-    }
+             if (salesAmount < smallestSale) {
+                 smallestSale = salesAmount;
+             }
 
-    /**
-     * @param list a list of integers to be counted
-     * @return the total value of all objects in list added together
-     */
-    public static double sumList(ArrayList<Integer> list){
-        int sum = 0;
-        for(int i : list){ 
-            sum += i;
-        }
-        return sum;
-    }
+             sum += salesAmount;
+             count++;
 
-    /**
-     * @param list a list of sales from companies to create a chart based upon
-     * prints out a chart, with one star per hundred sales
-     */
-    public static void buildStarChart(ArrayList<Integer> list){
-        int starNum;
-        for(int i = 0; i < list.size(); i++){
-            starNum = (list.get(i) / 100);
-            System.out.print("Sales #" + (i + 1) + ": ");
+             //code to print the stars out
+             int numStars = (int)(salesAmount / 100);
+             System.out.print("Sales #" + count + ":");
 
-            for(int j = starNum; j > 0; j--){
-                System.out.print("*");
-            }
+             for(int i = 0; i < numStars; i++) {
+                 System.out.print("*");
+             }
+             System.out.println();
 
-            System.out.println("");
-        }
-        System.out.println("\n");
-    }
-}
+             salesAmount = input.nextDouble();
+         }
+
+         //display results / error message
+         if(count == 0) {
+             System.out.println("No sales were entered except -1");
+         } else {
+            System.out.println();
+            System.out.println("Number of sales amounts    = " + count);
+            System.out.println("Largest sales amount       = " + largestSale);
+            System.out.println("Smallest sales amount      = " + smallestSale);
+            System.out.println("Sum of all sales amounts   = " + sum);
+            System.out.println("Range (largest - smallest) = " + (largestSale - smallestSale));
+            System.out.printf ("Average                    = %.2f\n",  (double) sum / count);
+            System.out.println();
+            System.out.println("Number of sales amounts less than $1000      = " + numLessThan1k);
+            System.out.println("Number of sales amounts between $1000 and $5000 = " + numBetween1kAnd5k);
+            System.out.println("Number of sales amounts more than $5000      = " + numMoreThan5k);
+         }
+         input.close();
+
+     }
+
+ }
