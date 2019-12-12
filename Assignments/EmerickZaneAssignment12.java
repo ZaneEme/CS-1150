@@ -2,6 +2,9 @@ import java.io.File;
 import java.util.Scanner;
 import java.io.IOException;
 
+//final grade: 94
+//code was corrected after
+
 /**
  * Name: Zane Emerick 
  * Class: CS1150 

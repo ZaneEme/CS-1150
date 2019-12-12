@@ -1,3 +1,7 @@
+
+//final grade: 96
+//code was corrected after
+
 /**
  * Name: Zane Emerick 
  * Class: CS1150 
@@ -33,7 +37,7 @@ public class EmerickZaneAssignment10 {
         //loop to find shortest pages and longest title
         int leastPages = 0;
         int longestTitle = 0;
-        for(int i = 0; i < bookArray.length - 1; i++) {
+        for(int i = 0; i < bookArray.length; i++) {
             if(bookArray[i].getPageCount() < bookArray[leastPages].getPageCount()) {
                 leastPages = i;
             }
@@ -52,7 +56,8 @@ public class EmerickZaneAssignment10 {
 
 
         //start library section of problem
-        Library library = new Library(50);
+        final int LIBRARY_SIZE = 50;
+        Library library = new Library(LIBRARY_SIZE);
 
         //transfer books from bookArray into a Library
         for(Book book : bookArray){
@@ -73,7 +78,7 @@ public class EmerickZaneAssignment10 {
         //loop to find shortest pages and longest title
         leastPages = 0;
         longestTitle = 0;
-        for(int i = 0; i < library.getNumBooks() - 1; i++) {
+        for(int i = 0; i < library.getNumBooks(); i++) {
             if(library.getBookAtIndex(i).getPageCount() < library.getBookAtIndex(leastPages).getPageCount()) {
                 leastPages = i;
             }

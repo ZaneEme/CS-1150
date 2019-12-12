@@ -1,4 +1,8 @@
 import java.util.Scanner;
+
+//final grade: 91
+//code was corrected after
+
 /**
  * Name: Zane Emerick 
  * Class: CS1150 
@@ -18,6 +22,9 @@ public class EmerickZaneAssignment6{
         int chosenBikes = 0;
         int totalBikesRented = 0;
         double profits = 0.0;
+        final int ONE_TRIP = 1;
+        final int TWENTY_FOUR_HOUR_TRIP = 2;
+        final int RETURN_BIKE = 3;
         
 
         //create the main loop
@@ -40,7 +47,7 @@ public class EmerickZaneAssignment6{
             //check for user selection being correct
             while(inputCorrect == false){
                 userSelection = input.nextInt();
-                if(userSelection == 1 || userSelection == 2 || userSelection == 3){
+                if(userSelection == ONE_TRIP || userSelection == TWENTY_FOUR_HOUR_TRIP || userSelection == RETURN_BIKE){
                     inputCorrect = true;
                     //code to end loop and stop program
                 } else if(userSelection == 999){ 
@@ -55,16 +62,17 @@ public class EmerickZaneAssignment6{
             inputCorrect = false;
 
             //if user selected one trip or 24 hour
-            if(userSelection == 1 || userSelection == 2){
+            if(userSelection == ONE_TRIP || userSelection == TWENTY_FOUR_HOUR_TRIP){
                 //if out of bikes
                 if(bikesAvailable == 0){
                     System.out.println("Sorry, we are currently out of bikes.");
                 } else {
                     System.out.printf("How many bikes? Limit is %d: ", bikesAvailable);
                     chosenBikes = input.nextInt();
+
                     //loop to ensure user chooses correct number of bikes
-                    while(!(chosenBikes <= bikesAvailable)){
-                        System.out.print("Invalid input, please choose less bikes: ");
+                    while(chosenBikes > bikesAvailable || chosenBikes <= 0){
+                        System.out.print("Invalid input, please choose a different number of bikes: ");
                         chosenBikes = input.nextInt();
                     }
                     //add the number of bikes and duration to total profits
@@ -108,7 +116,6 @@ public class EmerickZaneAssignment6{
 
 
     /**
-     * 
      * @param userSelection which option the user chose, single trip or 24 hour
      * @param chosenBikes how many bikes the user chose to rent
      */

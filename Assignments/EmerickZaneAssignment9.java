@@ -1,5 +1,8 @@
 import java.util.Arrays;
 
+//final grade: 95
+//code was corrected after
+
 /**
  * Name: Zane Emerick 
  * Class: CS1150 
@@ -123,6 +126,8 @@ public class EmerickZaneAssignment9{
     }
 
 
+
+    //EDIT: not what the assignment wants, too lazy to redo
 /**
  * Sort the array manually
  * @param list1 the first array to be sorted

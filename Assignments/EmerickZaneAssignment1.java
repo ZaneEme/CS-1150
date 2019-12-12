@@ -31,22 +31,25 @@ public class EmerickZaneAssignment1{
             System.out.print("-");
         }
         System.out.println("");
+        
         System.out.printf("1\t\t%.3f\t\t%.3f\t\t%.3f\n", moonWeight(1), marsWeight(1), jupiterWeight(1));
         System.out.printf("10\t\t%.3f\t\t%.3f\t\t%.3f\n", moonWeight(10), marsWeight(10), jupiterWeight(10));
         System.out.printf("100\t\t%.3f\t\t%.3f\t\t%.3f\n", moonWeight(100), marsWeight(100), jupiterWeight(100));
         System.out.printf("1000\t\t%.3f\t\t%.3f\t\t%.3f\n", moonWeight(1000), marsWeight(1000), jupiterWeight(1000));
     }
 
-
-    public static double moonWeight (int weight){ //finds a person's weight on the Moon
+    //finds a person's weight on the Moon
+    public static double moonWeight (int weight){ 
         return (weight / 9.81) * 1.622;
     }
 
-    public static double marsWeight (int weight){ //finds a person's weight on Mars
+    //finds a person's weight on Mars
+    public static double marsWeight (int weight){ 
         return (weight / 9.81) * 3.711;
     }
 
-    public static double jupiterWeight (int weight){ //finds a person's weight on Jupiter
+    //finds a person's weight on Jupiter
+    public static double jupiterWeight (int weight){ 
         return (weight / 9.81) * 24.79;
     }
 

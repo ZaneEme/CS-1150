@@ -1,4 +1,8 @@
 import java.util.Scanner;
+
+//final grade: 98
+//code was corrected after
+
 /**
  * Name: Zane Emerick 
  * Class: CS1150 
